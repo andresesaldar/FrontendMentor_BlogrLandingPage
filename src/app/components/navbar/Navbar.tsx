@@ -1,41 +1,44 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren, useContext, useState } from 'react';
 import styled from 'styled-components';
+import { NavbarContext, NavbarItem } from '../../context/NavbarProvider';
 import { PrimaryButton } from '../buttons/Buttons';
 
-const NavbarItem = styled.a``;
+const itemsLayout = (items: NavbarItem[]) => {
+    return items.map(({ name, subItems, href }) => (
+        <NavbarItemLayout key={name} href={href} subItems={subItems}>
+            {name}
+        </NavbarItemLayout>
+    ));
+};
+
+const Item = styled.a``;
+
+interface NavbarItemLayoutProps {
+    href?: string;
+    subItems?: NavbarItem[];
+}
+
+const NavbarItemLayout: FC<PropsWithChildren<NavbarItemLayoutProps>> = ({ children, href, subItems }) => {
+    const [isHovered, setIsHovered] = useState<boolean>(false);
+    return (
+        <>
+            {subItems && subItems.length > 0 ? (
+                <div onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}>
+                    <Item href={href}>{children}</Item>
+                    {isHovered ? <div>{itemsLayout(subItems)}</div> : null}
+                </div>
+            ) : (
+                <Item href={href}>{children}</Item>
+            )}
+        </>
+    );
+};
 
 export const Navbar: FC = () => {
+    const items = useContext(NavbarContext);
     return (
         <nav>
-            <div>
-                <div>
-                    <NavbarItem>Product</NavbarItem>
-                    <div>
-                        <NavbarItem>Overview</NavbarItem>
-                        <NavbarItem>Pricing</NavbarItem>
-                        <NavbarItem>Marketplace</NavbarItem>
-                        <NavbarItem>Features</NavbarItem>
-                        <NavbarItem>Integrations</NavbarItem>
-                    </div>
-                </div>
-                <div>
-                    <NavbarItem>Company</NavbarItem>
-                    <div>
-                        <NavbarItem>About</NavbarItem>
-                        <NavbarItem>Team</NavbarItem>
-                        <NavbarItem>Blog</NavbarItem>
-                        <NavbarItem>Careers</NavbarItem>
-                    </div>
-                </div>
-                <div>
-                    <NavbarItem>Connect</NavbarItem>
-                    <div>
-                        <NavbarItem>Contact</NavbarItem>
-                        <NavbarItem>Newsletter</NavbarItem>
-                        <NavbarItem>Linkedin</NavbarItem>
-                    </div>
-                </div>
-            </div>
+            <div>{itemsLayout(items)}</div>
             <div>
                 <PrimaryButton>Login</PrimaryButton>
                 <PrimaryButton>Sign Up</PrimaryButton>

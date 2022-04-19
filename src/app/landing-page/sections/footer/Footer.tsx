@@ -1,31 +1,30 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import { Logo } from '../../../components/logo/Logo';
+import { NavbarContext } from '../../../context/NavbarProvider';
 
 export const Footer: FC = () => {
+    const items = useContext(NavbarContext);
     return (
         <footer>
             <Logo></Logo>
-            <div>
-                <h5>Product</h5>
-                <a>Overview</a>
-                <a>Pricing</a>
-                <a>Marketplace</a>
-                <a>Features</a>
-                <a>Integrations</a>
-            </div>
-            <div>
-                <h5>Company</h5>
-                <a>About</a>
-                <a>Team</a>
-                <a>Blog</a>
-                <a>Careers</a>
-            </div>
-            <div>
-                <h5>Connect</h5>
-                <a>Contact</a>
-                <a>Newsletter</a>
-                <a>LinkedIn</a>
-            </div>
+            <nav>
+                <div>
+                    {items.map(({ name, subItems }) => (
+                        <>
+                            <h5>{name}</h5>
+                            <>
+                                {subItems && subItems.length > 0
+                                    ? subItems.map(({ name: subItemName, href: subItemHref }) => (
+                                          <a key={subItemName} href={subItemHref}>
+                                              {subItemName}
+                                          </a>
+                                      ))
+                                    : null}
+                            </>
+                        </>
+                    ))}
+                </div>
+            </nav>
         </footer>
     );
 };
