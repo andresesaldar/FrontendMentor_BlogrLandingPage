@@ -1,4 +1,6 @@
 import React, { FC } from 'react';
+import IllustrationEditorDesktop from '../../../../assets/images/illustration-editor-desktop.svg';
+import IllustrationEditorMobile from '../../../../assets/images/illustration-editor-mobile.svg';
 
 export const Introduction: FC = () => {
     return (
@@ -20,8 +22,8 @@ export const Introduction: FC = () => {
                 </p>
             </div>
             <div>
-                <img src="/src/assets/images/illustration-editor-desktop.svg"></img>
-                <img src="/src/assets/images/illustration-editor-mobile.svg"></img>
+                <img src={IllustrationEditorDesktop} alt="Illustration editor desktop"></img>
+                <img src={IllustrationEditorMobile} alt="Illustration editor mobile"></img>
             </div>
         </section>
     );

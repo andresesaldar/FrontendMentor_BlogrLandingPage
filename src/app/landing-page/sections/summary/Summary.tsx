@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 
+import IllustrationPhones from '../../../../assets/images/illustration-phones.svg';
+
 export const Summary: FC = () => {
     return (
         <section>
-            <img src="/src/assets/images/illustration-phones.svg" alt="Phones illustration" />
+            <img src={IllustrationPhones} alt="Phones illustration" />
             <div>
                 <h2>State of the Art Infrastructure</h2>
                 <p>

@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
 
+import IllustrationLaptopDesktop from '../../../../assets/images/illustration-laptop-desktop.svg';
+import IllustrationLaptopMobile from '../../../../assets/images/illustration-laptop-mobile.svg';
+
 export const Features: FC = () => {
     return (
         <section>
             <div>
-                <img src="/src/assets/images/illustration-laptop-desktop.svg" />
-                <img src="/src/assets/images/illustration-laptop-mobile.svg" />
+                <img src={IllustrationLaptopDesktop} alt="Illustration laptop desktop" />
+                <img src={IllustrationLaptopMobile} alt="Illustration laptop mobile" />
             </div>
             <div>
                 <h3>Free, open, simple</h3>
