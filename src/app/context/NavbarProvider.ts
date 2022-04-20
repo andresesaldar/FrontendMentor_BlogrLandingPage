@@ -3,7 +3,7 @@ import { createContext } from 'react';
 export interface NavbarItem {
     name: string;
     href?: string;
-    subItems?: NavbarItem[];
+    subItems?: { name: string; href?: string }[];
 }
 
 export const NavbarContext = createContext<NavbarItem[]>([]);

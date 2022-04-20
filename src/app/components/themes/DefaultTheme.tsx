@@ -34,19 +34,19 @@ const defaultTheme = {
 
 const Container = styled.div`
     h1 {
-        font-size: 2em !important;
+        font-size: 2em;
     }
 
     h2 {
-        font-size: 1.75em !important;
+        font-size: 1.75em;
     }
 
     h3 {
-        font-size: 1.5em !important;
+        font-size: 1.5em;
     }
 
     h4 {
-        font-size: 1.25em !important;
+        font-size: 1.25em;
     }
 
     h1,
@@ -62,12 +62,12 @@ const Container = styled.div`
     h5,
     p,
     span {
-        font-size: 1em !important;
+        font-size: 1em;
     }
 
     h6,
     small {
-        font-size: 0.875em !important;
+        font-size: 0.875em;
     }
 
     h1,
