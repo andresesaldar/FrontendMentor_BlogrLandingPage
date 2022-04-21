@@ -31,3 +31,19 @@
 .shadow {
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
 }
+
+.opacity-60 {
+    opacity: 60% !important;
+}
+
+.opacity-100 {
+    opacity: 100% !important;
+}
+
+.text-decoration-underline {
+    text-decoration: underline !important;
+}
+
+.flip-vertically {
+    transform: scaleY(-1) !important;
+}

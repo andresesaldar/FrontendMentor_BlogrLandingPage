@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
-export const PrimaryButton = styled.button`
+const initialStyles = `
     border-radius: 30px;
-    padding: 0.6rem 1rem;
-    font-weight: bold;
+    padding: 0.8rem 1.2rem;
+    font-weight: 700;
+    min-width: 110px;
+`;
+
+export const PrimaryButton = styled.button`
+    ${initialStyles}
+    font-family: 'Ubuntu', Open Sans;
     background-color: white;
     border: none;
     color: ${({ theme }) => theme.colors.secondary};
@@ -15,9 +21,8 @@ export const PrimaryButton = styled.button`
 `;
 
 export const OutlineButton = styled.button`
-    border-radius: 30px;
-    padding: 0.6rem 1rem;
-    font-weight: bold;
+    ${initialStyles}
+    font-family: 'Ubuntu', Open Sans;
     background-color: transparent;
     border: 1px solid ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.white};
@@ -29,9 +34,8 @@ export const OutlineButton = styled.button`
 `;
 
 export const RaisedButton = styled.button`
-    border-radius: 30px;
-    padding: 0.6rem 1rem;
-    font-weight: bold;
+    ${initialStyles}
+    font-family: 'Ubuntu', Open Sans;
     background-color: transparent;
     border: none;
     color: ${({ theme }) => theme.colors.white};

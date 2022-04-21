@@ -2,28 +2,33 @@ import React, { FC, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { NavbarContext } from '../../context/NavbarProvider';
 import { PrimaryButton, RaisedButton } from '../buttons/Buttons';
+import IconArrowLight from '../../../assets/icons/icon-arrow-light.svg';
 
 const Item = styled.a`
     text-decoration: none;
-    color: white;
+    opacity: 60%;
+    color: ${({ theme }) => theme.colors.white};
     font-weight: bold;
     &:hover {
         text-decoration: underline;
+        opacity: 100%;
     }
 `;
 
 const SubItem = styled.a`
     text-decoration: none;
     color: ${({ theme }) => theme.colors.primary};
-    margin-bottom: 0.5rem;
+    font-family: 'Ubuntu', Open Sans;
+    font-weight: 500;
+    margin-bottom: 1rem;
     &:hover {
-        font-weight: bold;
+        font-weight: 700;
     }
 `;
 
 const ItemContainer = styled.div`
     position: relative;
-    margin-right: 2.5rem;
+    margin-right: 2rem;
 `;
 
 const ItemsContainer = styled.div`
@@ -32,9 +37,9 @@ const ItemsContainer = styled.div`
 
 const SubItemsContainer = styled.div`
     position: absolute;
-    top: 1.5rem;
-    left: -0.5rem;
-    padding: 0.7rem 0.7rem 0.3rem 0.8rem;
+    top: 2.3rem;
+    left: -1.5rem;
+    padding: 2rem 2.5rem 1rem 1.5rem;
     min-width: 80px;
     border-radius: 5px;
     background: white;
@@ -64,7 +69,17 @@ export const Navbar: FC = () => {
             <ItemsContainer>
                 {items.map(({ name, subItems, href }) => (
                     <ItemContainer key={name} onClick={() => changeActiveItem(name)}>
-                        <Item href={href}>{name}</Item>
+                        <Item
+                            href={href}
+                            className={activeItem === name ? 'opacity-100 text-decoration-underline' : ''}
+                        >
+                            {name}{' '}
+                            <img
+                                src={IconArrowLight}
+                                alt="Item icon"
+                                className={activeItem === name ? 'flip-vertically' : ''}
+                            ></img>
+                        </Item>
                         {subItems && subItems.length > 0 && activeItem === name ? (
                             <SubItemsContainer className="shadow">
                                 {subItems.map(({ name: subItemName, href: subItemHref }) => (
@@ -78,7 +93,7 @@ export const Navbar: FC = () => {
                 ))}
             </ItemsContainer>
             <div>
-                <RaisedButton className="me-1">Login</RaisedButton>
+                <RaisedButton className="me-1 opacity-60">Login</RaisedButton>
                 <PrimaryButton>Sign Up</PrimaryButton>
             </div>
         </NavbarLayout>

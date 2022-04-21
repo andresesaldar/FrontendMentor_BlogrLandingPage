@@ -12,7 +12,7 @@ const MenuContainer = styled.div`
 `;
 
 const LogoContainer = styled.div`
-    margin-right: 2.5rem;
+    margin-right: 3.5rem;
 `;
 
 export const Menu: FC = () => {
